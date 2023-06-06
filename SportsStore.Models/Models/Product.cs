@@ -3,7 +3,7 @@ namespace SportsStore.Models;
 public class Product
 {
     [Key]
-    public long PorductId { get; set; }
+    public long? PorductId { get; set; }
 
     [Required]
     [DisplayName("Product Name")]
