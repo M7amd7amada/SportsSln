@@ -1,1 +1,8 @@
+@model IEnumerable<Product>?
+
 <h1>Welcome</h1>
+
+@foreach (var item in Model ?? Enumerable.Empty<Product>())
+{
+    <h3>@item.Name</h3>
+}
