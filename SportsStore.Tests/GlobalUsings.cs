@@ -16,5 +16,7 @@
     global using SportsStore.Models;
     global using SportsStore.Controllers;
     global using SportsStore.Data.Repository;
+    global using SportsStore.Models.ViewModels;
+    global using SportsStore.Utility.Infrastructure;
     global using SportsStore.Data.Repository.Interfaces;
 #endregion

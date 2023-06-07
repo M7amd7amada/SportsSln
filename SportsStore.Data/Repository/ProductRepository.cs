@@ -10,8 +10,8 @@ public class ProductRepository : Repository<Product>, IProductRepository
         _dbContext = dbContext;
     }
 
-    public void Save()
+    public void Update(Product product)
     {
-        _dbContext.SaveChanges();
+        _dbContext.Products?.Update(product);
     }
 }

@@ -12,7 +12,7 @@ public class AppDbContext : DbContext
         modelBuilder.Entity<Product>().HasData(
             new Product
             {
-                PorductId = 1,
+                ProductId = 1,
                 Name = "Kayak",
                 Description = "A boat for one person",
                 Category = "Watersports",
@@ -20,7 +20,7 @@ public class AppDbContext : DbContext
             },
             new Product
             {
-                PorductId = 8,
+                ProductId = 8,
                 Name = "Lifejacket",
                 Description = "Protective and fashionable",
                 Category = "Watersports",
@@ -28,7 +28,7 @@ public class AppDbContext : DbContext
             },
             new Product
             {
-                PorductId = 7,
+                ProductId = 7,
                 Name = "Soccer Ball",
                 Description = "FIFA-approved size and weight",
                 Category = "Soccer",
@@ -36,7 +36,7 @@ public class AppDbContext : DbContext
             },
             new Product
             {
-                PorductId = 6,
+                ProductId = 6,
                 Name = "Corner Flags",
                 Description = "Give your playing field a professional touch",
                 Category = "Soccer",
@@ -44,7 +44,7 @@ public class AppDbContext : DbContext
             },
             new Product
             {
-                PorductId = 9,
+                ProductId = 9,
                 Name = "Stadium",
                 Description = "Flat-packed 35,000-seat stadium",
                 Category = "Soccer",
@@ -52,7 +52,7 @@ public class AppDbContext : DbContext
             },
             new Product
             {
-                PorductId = 5,
+                ProductId = 5,
                 Name = "Thinking Cap",
                 Description = "Improve brain efficiency by 75%",
                 Category = "Chess",
@@ -60,7 +60,7 @@ public class AppDbContext : DbContext
             },
             new Product
             {
-                PorductId = 4,
+                ProductId = 4,
                 Name = "Unsteady Chair",
                 Description = "Secretly give your opponent a disadvantage",
                 Category = "Chess",
@@ -68,7 +68,7 @@ public class AppDbContext : DbContext
             },
             new Product
             {
-                PorductId = 3,
+                ProductId = 3,
                 Name = "Human Chess Board",
                 Description = "A fun game for the family",
                 Category = "Chess",
@@ -76,7 +76,7 @@ public class AppDbContext : DbContext
             },
             new Product
             {
-                PorductId = 2,
+                ProductId = 2,
                 Name = "Bling-Bling King",
                 Description = "Gold-plated, diamond-studded King",
                 Category = "Chess",

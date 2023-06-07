@@ -2,15 +2,22 @@ namespace SportsStore.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly IProductRepository _repository;
+    private readonly IUnitOfWork _unitOfWork;
+    public int PageSize { get; set; } = 4;
 
-    public HomeController(IProductRepository repository)
+    public HomeController(IUnitOfWork unitOfWork)
     {
-        _repository = repository;
+        _unitOfWork = unitOfWork;
     }
 
-    public IActionResult Index()
+    public IActionResult Index(int productPage = 1)
     {
-        return View(_repository.Entities);
+        if (_unitOfWork.ProductRepository.Entities is null)
+            return NotFound();
+
+        return View(_unitOfWork.ProductRepository.Entities
+            .OrderBy(product => product.ProductId)
+            .Skip((productPage - 1) * PageSize)
+            .Take(PageSize));
     }
 }
