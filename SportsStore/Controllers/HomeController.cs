@@ -15,9 +15,17 @@ public class HomeController : Controller
         if (_unitOfWork.ProductRepository.Entities is null)
             return NotFound();
 
-        return View(_unitOfWork.ProductRepository.Entities
-            .OrderBy(product => product.ProductId)
-            .Skip((productPage - 1) * PageSize)
-            .Take(PageSize));
+        return View(new ProductsListViewModel {
+            Products = _unitOfWork.ProductRepository.Entities
+                .OrderBy(product => product.ProductId)
+                .Skip ((productPage - 1) * PageSize)
+                .Take(PageSize),
+            
+            PagingInfo = new PagingInfo {
+                CurrentPage = productPage,
+                ItemsPerPage = PageSize,
+                TotalItems = _unitOfWork.ProductRepository.Entities.Count()
+            }
+        });
     }
 }
