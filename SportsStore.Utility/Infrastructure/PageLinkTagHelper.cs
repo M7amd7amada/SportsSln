@@ -6,12 +6,13 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace SportsStore.Utility.Infrastructure;
 
+[HtmlTargetElement("div", Attributes = "page-model")]
 public class PageLinkTagHelper : TagHelper
 {
-    private IUrlHelperFactory urlHelperFactory;
-    public PageLinkTagHelper(IUrlHelperFactory helperFactory)
+    private readonly IUrlHelperFactory _urlHelperFactory;
+    public PageLinkTagHelper(IUrlHelperFactory urlHelperFactory)
     {
-        urlHelperFactory = helperFactory;
+        _urlHelperFactory = urlHelperFactory;
     }
     [ViewContext]
     [HtmlAttributeNotBound]
@@ -19,23 +20,30 @@ public class PageLinkTagHelper : TagHelper
     public PagingInfo? PageModel { get; set; }
     public string? PageAction { get; set; }
 
+    [HtmlAttributeName(DictionaryAttributePrefix = "page-url-")]
+    public Dictionary<string, object> PageUrlValues { get; set; }
+        = new Dictionary<string, object>();
+
     public bool PageClassesEnabled { get; set; } = true;
     public string PageClass { get; set; } = String.Empty;
     public string PageClassNormal { get; set; } = String.Empty;
     public string PageClassSelected { get; set; } = String.Empty;
 
     public override void Process(TagHelperContext context,
-    TagHelperOutput output)
+        TagHelperOutput output)
     {
         if (ViewContext != null && PageModel != null)
         {
-            IUrlHelper urlHelper = urlHelperFactory.GetUrlHelper(ViewContext);
+            IUrlHelper urlHelper = _urlHelperFactory.GetUrlHelper(ViewContext);
             TagBuilder result = new TagBuilder("div");
             for (int i = 1; i <= PageModel.TotalPages; i++)
             {
                 TagBuilder tag = new TagBuilder("a");
+                PageUrlValues["productPage"] = i;
                 tag.Attributes["href"] = urlHelper.Action(PageAction,
-                new { productPage = i });
+                    PageUrlValues);
+                tag.Attributes["href"] = urlHelper.Action(PageAction,
+                    new { productPage = i });
                 if (PageClassesEnabled)
                 {
                     tag.AddCssClass(PageClass);

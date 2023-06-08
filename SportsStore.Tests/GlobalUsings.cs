@@ -4,6 +4,8 @@
 #region MicrosoftUsings
     global using Microsoft.AspNetCore;
     global using Microsoft.AspNetCore.Mvc;
+    global using Microsoft.AspNetCore.Mvc.Rendering;
+    global using Microsoft.AspNetCore.Mvc.ViewComponents;
 #endregion
 
 #region UnitTestingUsings
@@ -14,6 +16,7 @@
 #region ApplicationUsings
     global using SportsStore.Data;
     global using SportsStore.Models;
+    global using SportsStore.Components;
     global using SportsStore.Controllers;
     global using SportsStore.Data.Repository;
     global using SportsStore.Models.ViewModels;
