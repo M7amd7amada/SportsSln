@@ -10,6 +10,10 @@
 *.userosscache
 *.sln.docstates
 
+# Ignore SCSS files
+*.scss
+*.css
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
